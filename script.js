@@ -12,7 +12,7 @@ async function getWeatherData() {
         document.getElementById('pressureValue').textContent = data.main.pressure + ' hPa';
         document.getElementById('humidityValue').textContent = data.main.humidity + ' %';
         
-        // Show weather icon
+   
         const iconCode = data.weather[0].icon;
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
         const weatherIcon = document.getElementById('weatherIcon');
@@ -20,7 +20,7 @@ async function getWeatherData() {
         weatherIcon.style.display = 'inline-block';
         weatherIcon.alt = data.weather[0].main;
 
-        // Fade-in effect for weather info
+       
         const weatherCard = document.querySelector('.weather-card');
         weatherCard.style.opacity = 0;
         setTimeout(() => { weatherCard.style.opacity = 1; }, 100);
@@ -42,7 +42,7 @@ function updateBackground() {
     const now = new Date();
     const hours = now.getHours();
     
-    // Update background based on time of day
+   
     if (hours >= 6 && hours < 18) {
         document.body.className = 'day-mode';
     } else {
@@ -66,12 +66,12 @@ function showError(message) {
     }, 3000);
 }
 
-// Initial load
+
 getWeatherData();
 updateDublinDateTime();
 setInterval(updateDublinDateTime, 1000);
 
-// Update weather data every 30 minutes
+
 setInterval(getWeatherData, 30 * 60 * 1000);
 
 function updateDublinDateTime() {
