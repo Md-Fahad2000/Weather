@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.weather-info {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.temperature {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 1rem 0;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.detail-item span:first-child {
+    color: #666;
+}
+
+.detail-item span:last-child {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+@media (min-width: 768px) {
+    .details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.night-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.day-mode {
+    background-color: #f0f2f5;
+    color: #333333;
+}
