@@ -9,8 +9,8 @@ async function getWeatherData() {
    
         document.getElementById('weatherSummary').textContent = data.weather[0].description;
         document.getElementById('temperature').textContent = Math.round(data.main.temp);
-        document.getElementById('pressure').textContent = data.main.pressure;
-        document.getElementById('humidity').textContent = data.main.humidity;
+        document.getElementById('pressureValue').textContent = data.main.pressure + ' hPa';
+        document.getElementById('humidityValue').textContent = data.main.humidity + ' %';
         
         // Show weather icon
         const iconCode = data.weather[0].icon;

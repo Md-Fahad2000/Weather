@@ -15,15 +15,15 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 600px;
+    width: 98%;
+    max-width: 320px;
     animation: fadeIn 1s ease;
 }
 
 .weather-card {
     background: rgba(255, 255, 255, 0.95);
-    padding: 2.5rem 2rem;
-    border-radius: 20px;
+    padding: 1rem 0.5rem;
+    border-radius: 12px;
     box-shadow: 0 8px 24px rgba(44, 62, 80, 0.15);
     transition: box-shadow 0.3s;
     position: relative;
@@ -37,58 +37,64 @@ body {
 }
 
 .weather-icon {
-    width: 64px;
-    height: 64px;
+    width: 36px;
+    height: 36px;
     vertical-align: middle;
-    margin-bottom: 0.5rem;
-    margin-right: 0.5rem;
+    margin-bottom: 0.2rem;
+    margin-right: 0.2rem;
     filter: drop-shadow(0 2px 8px rgba(44,62,80,0.10));
     transition: transform 0.3s;
 }
 
 h1 {
     color: #2c3e50;
-    margin-bottom: 1.5rem;
-    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.1rem;
     letter-spacing: 1px;
     font-weight: 700;
 }
 
 .temperature {
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #0077b6;
-    margin: 1.2rem 0;
+    margin: 0.5rem 0;
     text-shadow: 0 2px 8px rgba(44,62,80,0.10);
     letter-spacing: 2px;
 }
 
 .details {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.2rem;
-    margin-top: 2.2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem 0.7rem;
+    margin-top: 0.7rem;
 }
 
 .detail-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.7rem 1rem;
+    padding: 0.3rem 0.4rem;
     background: rgba(236, 245, 255, 0.6);
     border-radius: 10px;
     box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+    min-width: 0;
 }
 
 .detail-item span:first-child {
     color: #666;
-    font-size: 1rem;
+    font-size: 0.85rem;
 }
 
 .detail-item span:last-child {
     font-weight: bold;
     color: #0077b6;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    max-width: none;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    text-align: right;
 }
 
 #errorContainer, .error-message {
@@ -111,8 +117,8 @@ h1 {
 }
 
 .dublin-datetime {
-    margin: 0.5rem 0 1rem 0;
-    font-size: 1.2rem;
+    margin: 0.2rem 0 0.5rem 0;
+    font-size: 0.85rem;
     color: #555;
     letter-spacing: 1px;
     font-weight: 500;
@@ -194,4 +200,15 @@ h1 {
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.details .detail-item:last-child {
+    font-size: 0.75rem;
+    flex-direction: row;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+#lastUpdated {
+    font-size: 0.75rem;
+    white-space: nowrap;
 }
