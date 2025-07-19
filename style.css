@@ -11,73 +11,187 @@ body {
     justify-content: center;
     align-items: center;
     transition: background-color 0.5s;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
 }
 
 .container {
     width: 90%;
     max-width: 600px;
+    animation: fadeIn 1s ease;
 }
 
 .weather-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(44, 62, 80, 0.15);
+    transition: box-shadow 0.3s;
+    position: relative;
+}
+.weather-card:hover {
+    box-shadow: 0 12px 32px rgba(44, 62, 80, 0.25);
 }
 
 .weather-info {
     text-align: center;
 }
 
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    vertical-align: middle;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 2px 8px rgba(44,62,80,0.10));
+    transition: transform 0.3s;
+}
+
 h1 {
-    color: #333;
+    color: #2c3e50;
     margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 .temperature {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: bold;
-    color: #2c3e50;
-    margin: 1rem 0;
+    color: #0077b6;
+    margin: 1.2rem 0;
+    text-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    letter-spacing: 2px;
 }
 
 .details {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.2rem;
+    margin-top: 2.2rem;
 }
 
 .detail-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    background: rgba(236, 245, 255, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.04);
 }
 
 .detail-item span:first-child {
     color: #666;
+    font-size: 1rem;
 }
 
 .detail-item span:last-child {
     font-weight: bold;
-    color: #2c3e50;
+    color: #0077b6;
+    font-size: 1.1rem;
+}
+
+#errorContainer, .error-message {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.error-message {
+    background: #ff4d4f;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    animation: fadeInDown 0.5s;
+}
+
+.dublin-datetime {
+    margin: 0.5rem 0 1rem 0;
+    font-size: 1.2rem;
+    color: #555;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
     .details {
         grid-template-columns: repeat(2, 1fr);
     }
+    .weather-card {
+        padding: 3rem 3rem;
+    }
 }
 
 .night-mode {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background: linear-gradient(135deg, #232526 0%, #2c3e50 100%);
+    color: #e0e6ed;
 }
 
-.day-mode {
-    background-color: #f0f2f5;
-    color: #333333;
+.night-mode .weather-card {
+    background: rgba(34, 40, 49, 0.85);
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+}
+
+.night-mode h1,
+.night-mode .temperature,
+.night-mode .detail-item span:last-child {
+    color: #7ed6df;
+    text-shadow: 0 2px 8px rgba(44,62,80,0.25);
+}
+
+.night-mode .detail-item {
+    background: rgba(44, 62, 80, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgba(44,62,80,0.10);
+}
+
+.night-mode .weather-icon {
+    filter: drop-shadow(0 2px 8px #222831) brightness(1.2) contrast(1.2);
+}
+
+.night-mode .error-message {
+    background: #e17055;
+    color: #fff;
+}
+
+.night-mode .dublin-datetime {
+    color: #7ed6df;
+}
+
+/* Optional: Toggle button style for future dark/light switch */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: rgba(44,62,80,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 10;
+}
+.theme-toggle:hover {
+    background: #7ed6df;
+    color: #232526;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }

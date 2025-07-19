@@ -12,6 +12,19 @@ async function getWeatherData() {
         document.getElementById('pressure').textContent = data.main.pressure;
         document.getElementById('humidity').textContent = data.main.humidity;
         
+        // Show weather icon
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        const weatherIcon = document.getElementById('weatherIcon');
+        weatherIcon.src = iconUrl;
+        weatherIcon.style.display = 'inline-block';
+        weatherIcon.alt = data.weather[0].main;
+
+        // Fade-in effect for weather info
+        const weatherCard = document.querySelector('.weather-card');
+        weatherCard.style.opacity = 0;
+        setTimeout(() => { weatherCard.style.opacity = 1; }, 100);
+        
       
         const lastUpdated = new Date().toLocaleString();
         document.getElementById('lastUpdated').textContent = lastUpdated;
@@ -38,11 +51,16 @@ function updateBackground() {
 }
 
 function showError(message) {
+    let errorContainer = document.getElementById('errorContainer');
+    if (!errorContainer) {
+        errorContainer = document.createElement('div');
+        errorContainer.id = 'errorContainer';
+        document.body.appendChild(errorContainer);
+    }
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
-    document.body.appendChild(errorDiv);
-    
+    errorContainer.appendChild(errorDiv);
     setTimeout(() => {
         errorDiv.remove();
     }, 3000);
@@ -50,6 +68,24 @@ function showError(message) {
 
 // Initial load
 getWeatherData();
+updateDublinDateTime();
+setInterval(updateDublinDateTime, 1000);
 
 // Update weather data every 30 minutes
 setInterval(getWeatherData, 30 * 60 * 1000);
+
+function updateDublinDateTime() {
+    const now = new Date();
+    const options = {
+        timeZone: 'Europe/Dublin',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+    const dublinTime = now.toLocaleString('en-GB', options);
+    document.getElementById('dublinDateTime').textContent = dublinTime;
+}

@@ -12,7 +12,11 @@
             <h1>Dublin Weather</h1>
             <div class="weather-info">
                 <div class="summary">
+                    <img id="weatherIcon" src="" alt="Weather Icon" class="weather-icon" style="display:none;"/>
                     <h2 id="weatherSummary">Loading...</h2>
+                </div>
+                <div class="dublin-datetime">
+                    <span id="dublinDateTime">--:--</span>
                 </div>
                 <div class="temperature">
                     <span id="temperature">-</span>°C
@@ -34,6 +38,7 @@
             </div>
         </div>
     </div>
+    <div id="errorContainer"></div>
     <script src="script.js"></script>
 </body>
 </html>
